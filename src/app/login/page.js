@@ -1,8 +1,12 @@
-
+import { FaPlaystation } from 'react-icons/fa';
 
 export default function Home() {
     return (
-        <main>
+        <main className="login">
+            <FaPlaystation 
+                color='#ff0000' 
+                size={60}>
+            </FaPlaystation>
             <h1>Login Page</h1>
             
             <form>

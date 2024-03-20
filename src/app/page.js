@@ -5,11 +5,28 @@ import { ClipLoader } from 'react-spinners';
 
 export default function Home() {
     const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState('');
     
-    function getStarted(e) {
+    function getStarted(e) { 
         e.preventDefault();
         
-        setLoading(true);
+        try {
+            setLoading(true);
+            
+            localStorage.setItem('email', email);
+            
+            window.location.href = '/signup';
+        } catch (error) {
+            console.log('error, user registration failed');
+            console.error(error.message);
+        } finally {
+            setLoading(false);
+            setEmail('');
+        }
+    }
+    
+    function handleEmailChange(e) {
+        setEmail(e.target.value);
     }
     
     return (
@@ -41,9 +58,13 @@ export default function Home() {
                 <form onSubmit={getStarted}>
                     <input
                         type='email'
+                        value={email}
+                        onChange={handleEmailChange}
                         placeholder='example@gmail.com'>
                     </input>
-                    <button type='submit'>
+                    <button 
+                        type='submit'
+                        disabled={loading}>
                         <ClipLoader 
                             loading={loading} 
                             size={10} 
