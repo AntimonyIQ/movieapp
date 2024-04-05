@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        
+        thead {
+            background: #f0f0f0;
+        }
+        
+        tr td {
+            border: 1px solid #00b758;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+           <tr>
+                <th>Student name</th>
+                <th>Time Joined (e.g 09:00pm)</th>
+                <th>Activity (active or not active)</th>
+           </tr> 
+        </thead>
+        <tbody id="student-data">
+            
+        </tbody>
+    </table>
+    
+    
+    <script>
+        const tableBody = document.getElementById('student-data');
+        
+        const search_result = [
+            
+        ];
+        
+        const student_attendance = [
+            { name: 'Mr Blue', time: '09:00am', activity: 'active', },
+            { name: 'Mr Yellow', time: '07:00am', activity: 'not active', },
+            { name: 'Mr Black', time: '06:00am', activity: 'active', },
+            { name: 'Mr White', time: '04:00am', activity: 'not active', },
+        ];
+        
+        function renderStudentAttendance() {
+            
+            for (let key = 0; key < student_attendance.length; key++) {
+                
+                const row = document.createElement('tr');
+                                
+                row.innerHTML = `
+                    <td>${student_attendance[key].name}</td>
+                    <td>${student_attendance[key].time}</td>
+                    <td>${student_attendance[key].activity}</td>
+                `;
+                                
+                tableBody.appendChild(row);
+                
+            }
+            
+        }
+        
+        renderStudentAttendance();
+        
+    </script>
+</body>
+</html>
